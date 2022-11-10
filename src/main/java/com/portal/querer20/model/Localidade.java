@@ -15,35 +15,35 @@ public class Localidade {
     private String estado;
     private String logradouro;
 
-    @OneToMany(mappedBy = "regional")
-    private List<Regional> regional = new ArrayList<>();
-    @OneToMany(mappedBy = "agencia")
-    private List<Agencia> agencia = new ArrayList<>();
-    @OneToMany(mappedBy = "postoAtendimento")
-    private List<PostoAtendimento> postoAtendimento = new ArrayList<>();
+    @OneToMany(mappedBy = "localidade")
+    private List<Agencia> agencias = new ArrayList<>();
+    @OneToMany(mappedBy = "localidade")
+    private List<Regional> regionais = new ArrayList<>();
+    @OneToMany(mappedBy = "localidade")
+    private List<PostoAtendimento> pA = new ArrayList<>();
 
-    public List<Regional> getRegional() {
-        return regional;
+    public List<Agencia> getAgencias() {
+        return agencias;
     }
 
-    public void setRegional(List<Regional> regional) {
-        this.regional = regional;
+    public void setAgencias(List<Agencia> agencias) {
+        this.agencias = agencias;
     }
 
-    public List<Agencia> getAgencia() {
-        return agencia;
+    public List<Regional> getRegionais() {
+        return regionais;
     }
 
-    public void setAgencia(List<Agencia> agencia) {
-        this.agencia = agencia;
+    public void setRegionais(List<Regional> regionais) {
+        this.regionais = regionais;
     }
 
-    public List<PostoAtendimento> getPostoAtendimento() {
-        return postoAtendimento;
+    public List<PostoAtendimento> getpA() {
+        return pA;
     }
 
-    public void setPostoAtendimento(List<PostoAtendimento> postoAtendimento) {
-        this.postoAtendimento = postoAtendimento;
+    public void setpA(List<PostoAtendimento> pA) {
+        this.pA = pA;
     }
 
     public Localidade() {

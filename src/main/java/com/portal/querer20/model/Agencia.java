@@ -1,18 +1,40 @@
 package com.portal.querer20.model;
 
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Agencia {
-
+    @Id
     private Integer codigo;
     private String telefone;
     private Boolean unidadeDeNegocios;
     private Boolean trag;
     private Integer tragDestino;
 
+    @OneToMany(mappedBy = "agencias")
     private List<Funcionario> funcionarios = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "localidade_id")
     private Localidade localidade;
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public Localidade getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(Localidade localidade) {
+        this.localidade = localidade;
+    }
 
     public Agencia() {
     }
@@ -57,19 +79,5 @@ public class Agencia {
         this.tragDestino = tragDestino;
     }
 
-    public List<Funcionario> getFuncionarios() {
-        return funcionarios;
-    }
 
-    public void setFuncionarios(List<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
-    }
-
-    public Localidade getLocalidade() {
-        return localidade;
-    }
-
-    public void setLocalidade(Localidade localidade) {
-        this.localidade = localidade;
-    }
 }

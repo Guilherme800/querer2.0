@@ -1,9 +1,8 @@
 package com.portal.querer20.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +14,29 @@ public class PostoAtendimento {
     private String telefone;
     private Integer agenciaOrigem;
 
+    @OneToMany(mappedBy = "pA")
     private List<Funcionario> funcionarios = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "localidade_id")
     private Localidade localidade;
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public Localidade getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(Localidade localidade) {
+        this.localidade = localidade;
+    }
+
 
     public PostoAtendimento() {
     }
@@ -45,19 +65,5 @@ public class PostoAtendimento {
         this.agenciaOrigem = agenciaOrigem;
     }
 
-    public List<Funcionario> getFuncionarios() {
-        return funcionarios;
-    }
 
-    public void setFuncionarios(List<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
-    }
-
-    public Localidade getLocalidade() {
-        return localidade;
-    }
-
-    public void setLocalidade(Localidade localidade) {
-        this.localidade = localidade;
-    }
 }

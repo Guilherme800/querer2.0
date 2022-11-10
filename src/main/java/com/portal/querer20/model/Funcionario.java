@@ -18,17 +18,38 @@ public class Funcionario {
     private String telefoneCelular;
 
     @ManyToOne
-    @JoinColumn(name = "codigo_regional")
-    @JsonIgnore
-    private Regional regional;
+    @JoinColumn(name = "regional_codigo")
+    private Regional regionais;
     @ManyToOne
-    @JoinColumn(name = "codigo_agencia")
-    @JsonIgnore
-    private Agencia agencia;
+    @JoinColumn(name = "agencia_codigo")
+    private Agencia agencias;
     @ManyToOne
-    @JoinColumn(name = "codigo_postoAtendimento")
-    @JsonIgnore
-    private PostoAtendimento postoAtendimento;
+    @JoinColumn(name = "pa_codigo")
+    private PostoAtendimento pA;
+
+    public Regional getRegionais() {
+        return regionais;
+    }
+
+    public void setRegionais(Regional regionais) {
+        this.regionais = regionais;
+    }
+
+    public Agencia getAgencias() {
+        return agencias;
+    }
+
+    public void setAgencias(Agencia agencias) {
+        this.agencias = agencias;
+    }
+
+    public PostoAtendimento getpA() {
+        return pA;
+    }
+
+    public void setpA(PostoAtendimento pA) {
+        this.pA = pA;
+    }
 
     public Funcionario() {
     }

@@ -12,31 +12,20 @@ public class Regional {
     @Id
     private Integer codigo;
     private String telefone;
-    private List<Agencia> agencia = new ArrayList<>();
+
+    @OneToMany(mappedBy = "regionais")
+    private List<Funcionario> funcionarios = new ArrayList<>();
+
     @ManyToOne
-    @JoinColumn(name = "id_localidade")
-    @JsonIgnore
+    @JoinColumn(name = "localidade_id")
     private Localidade localidade;
-    @OneToMany(mappedBy = "funcionarios")
-    private List<Funcionario> funcionario = new ArrayList<>();
 
-    public Regional() {
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
     }
 
-    public List<Funcionario> getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(List<Funcionario> funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public List<Agencia> getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(List<Agencia> agencia) {
-        this.agencia = agencia;
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
     public Localidade getLocalidade() {
@@ -46,6 +35,11 @@ public class Regional {
     public void setLocalidade(Localidade localidade) {
         this.localidade = localidade;
     }
+
+
+    public Regional() {
+    }
+
 
     public Integer getCodigo() {
         return codigo;
