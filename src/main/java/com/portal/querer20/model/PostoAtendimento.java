@@ -21,6 +21,18 @@ public class PostoAtendimento {
     @JoinColumn(name = "localidade_id")
     private Localidade localidade;
 
+    @ManyToOne
+    @JoinColumn(name = "agencia_codigo")
+    private Agencia agencia;
+
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
+
     public List<Funcionario> getFuncionarios() {
         return funcionarios;
     }

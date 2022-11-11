@@ -13,12 +13,22 @@ public class Regional {
     private Integer codigo;
     private String telefone;
 
-    @OneToMany(mappedBy = "regionais")
+    @OneToMany(mappedBy = "regional")
     private List<Funcionario> funcionarios = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name = "localidade_id")
     private Localidade localidade;
+
+    @OneToMany(mappedBy = "regional")
+    private List<Agencia> agencias = new ArrayList<>();
+
+    public List<Agencia> getAgencias() {
+        return agencias;
+    }
+
+    public void setAgencias(List<Agencia> agencias) {
+        this.agencias = agencias;
+    }
 
     public List<Funcionario> getFuncionarios() {
         return funcionarios;

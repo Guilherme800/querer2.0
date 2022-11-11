@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RegionalRepository extends JpaRepository<Regional, Integer> {
+
+    Regional findByCodigo (Integer codigo);
+
 }

@@ -13,12 +13,35 @@ public class Agencia {
     private Boolean trag;
     private Integer tragDestino;
 
-    @OneToMany(mappedBy = "agencias")
+    @OneToMany(mappedBy = "agencia")
     private List<Funcionario> funcionarios = new ArrayList<>();
+
+    @OneToMany(mappedBy = "agencia")
+    private List<PostoAtendimento> pA = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "localidade_id")
     private Localidade localidade;
+
+    @ManyToOne
+    @JoinColumn(name = "regional_codigo")
+    private Regional regional;
+
+    public List<PostoAtendimento> getpA() {
+        return pA;
+    }
+
+    public void setpA(List<PostoAtendimento> pA) {
+        this.pA = pA;
+    }
+
+    public Regional getRegional() {
+        return regional;
+    }
+
+    public void setRegional(Regional regional) {
+        this.regional = regional;
+    }
 
     public List<Funcionario> getFuncionarios() {
         return funcionarios;

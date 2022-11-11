@@ -19,28 +19,28 @@ public class Funcionario {
 
     @ManyToOne
     @JoinColumn(name = "regional_codigo")
-    private Regional regionais;
+    private Regional regional;
     @ManyToOne
     @JoinColumn(name = "agencia_codigo")
-    private Agencia agencias;
+    private Agencia agencia;
     @ManyToOne
     @JoinColumn(name = "pa_codigo")
     private PostoAtendimento pA;
 
-    public Regional getRegionais() {
-        return regionais;
+    public Regional getRegional() {
+        return regional;
     }
 
-    public void setRegionais(Regional regionais) {
-        this.regionais = regionais;
+    public void setRegional(Regional regional) {
+        this.regional = regional;
     }
 
-    public Agencia getAgencias() {
-        return agencias;
+    public Agencia getAgencia() {
+        return agencia;
     }
 
-    public void setAgencias(Agencia agencias) {
-        this.agencias = agencias;
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
     }
 
     public PostoAtendimento getpA() {
