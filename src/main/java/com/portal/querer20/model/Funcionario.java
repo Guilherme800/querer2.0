@@ -20,12 +20,15 @@ public class Funcionario {
 
     @ManyToOne
     @JoinColumn(name = "regional_codigo")
+    @JsonIgnore
     private Regional regional;
     @ManyToOne
     @JoinColumn(name = "agencia_codigo")
+    @JsonIgnore
     private Agencia agencia;
     @ManyToOne
     @JoinColumn(name = "pa_codigo")
+    @JsonIgnore
     private PostoAtendimento pA;
 
     public Regional getRegional() {

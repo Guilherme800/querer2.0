@@ -11,7 +11,7 @@ import java.util.List;
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Integer> {
 
     Funcionario findByFuncional (Integer funcional);
-    Funcionario findByNome (String nome);
+    List<Funcionario> findByNome (String nome);
     Funcionario findByEmail (String email);
     Funcionario findByCargo (String cargo);
 
