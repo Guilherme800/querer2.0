@@ -46,7 +46,7 @@ public class FuncionarioController {
             return "Cargo obrigatório.";}
 
         funcionarioService.adicionarFuncionario(funcionario);
-        return "Funcionario adicionado";
+        return "Funcionario adicionado.";
     }
 
     @DeleteMapping("/{funcional}")

@@ -1,5 +1,7 @@
 package com.portal.querer20.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +19,13 @@ public class Localidade {
     private String logradouro;
 
     @OneToMany(mappedBy = "localidade")
+    @JsonIgnore
     private List<Agencia> agencias = new ArrayList<>();
     @OneToMany(mappedBy = "localidade")
+    @JsonIgnore
     private List<Regional> regionais = new ArrayList<>();
     @OneToMany(mappedBy = "localidade")
+    @JsonIgnore
     private List<PostoAtendimento> pA = new ArrayList<>();
 
     public List<Agencia> getAgencias() {
