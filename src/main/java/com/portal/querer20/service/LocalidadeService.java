@@ -17,4 +17,43 @@ public class LocalidadeService {
         return localidadeRepository.findAll();
     }
 
+    public Localidade cadastrarLocalidade (Localidade localidade){
+        return localidadeRepository.save(localidade);
+    }
+
+    public Boolean atualizarLocalidade (Integer id, Localidade localidade){
+        Localidade localidadedb = buscarLocalidadePorId(id);
+        if(localidade == null){
+            return false;
+        }
+
+        if (localidade.getBairro() != null){
+            localidadedb.setBairro(localidade.getBairro());
+        }
+        if (localidade.getCidade() != null){
+            localidadedb.setCidade(localidade.getCidade());
+        }
+        if (localidade.getLogradouro() != null){
+            localidadedb.setLogradouro(localidade.getLogradouro());
+        }
+        if (localidade.getEstado() != null){
+            localidadedb.setEstado(localidade.getEstado());
+        }
+        localidadeRepository.save(localidadedb);
+        return true;
+    }
+
+    public Boolean deletarLocalidade (Integer id){
+        Localidade localidade = buscarLocalidadePorId(id);
+        if(localidade == null){
+            return false;
+        }
+        localidadeRepository.delete(localidade);
+        return true;
+    }
+
+    public Localidade buscarLocalidadePorId(Integer id){
+        return localidadeRepository.findById(id).get();
+    }
+
 }

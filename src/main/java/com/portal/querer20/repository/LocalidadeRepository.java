@@ -13,4 +13,5 @@ public interface LocalidadeRepository extends JpaRepository<Localidade, Integer>
     Localidade findByEstado (String estado);
     Localidade findByLogradouro (String logradouro);
 
+
 }

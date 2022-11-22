@@ -59,7 +59,7 @@ public class FuncionarioController {
     }
 
     @PutMapping("/{funcional}")
-    public String atualizarfuncionario (@PathVariable Integer funcional, Funcionario funcionario) {
+    public String atualizarfuncionario (@PathVariable Integer funcional,@RequestBody Funcionario funcionario) {
         Boolean atualizou = funcionarioService.atualizarFuncionario(funcional, funcionario);
         if(!atualizou){
             return "Funcionario não encontrado.";
