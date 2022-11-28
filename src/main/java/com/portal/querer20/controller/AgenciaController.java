@@ -22,17 +22,26 @@ public class AgenciaController {
 
     @GetMapping ("/{codigo}")
     public Agencia BuscarAgenciaPorCdigo (@PathVariable Integer codigo) {
-        return null;
+
+        return agenciaService.buscarAgenciaPorCodigo(codigo);
     }
 
     @PutMapping ("/{codigo}")
     public String atualizarAgencia (@PathVariable Integer codigo, @RequestBody Agencia agencia) {
-        return null;
+        Boolean atualizou = agenciaService.atualizarAgencia(codigo, agencia);
+        if(!atualizou){
+            return "Agencia não encontrada.";
+        }
+        return "Agencia atualizada com sucesso.";
     }
 
     @DeleteMapping ("/{codigo}")
     public String deletarAgencia (@PathVariable Integer codigo) {
-        return null;
+        Boolean deletou = agenciaService.deletarAgencia(codigo);
+        if (!deletou){
+            return "Agencia não encontrada.";
+    }
+        return "Agencia deletada com sucesso.";
     }
 
     @PostMapping

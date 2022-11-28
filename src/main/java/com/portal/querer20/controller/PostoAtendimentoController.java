@@ -22,17 +22,25 @@ public class PostoAtendimentoController {
 
     @GetMapping ("/{codigo}")
     public PostoAtendimento BuscarPAPorCdigo (@PathVariable Integer codigo) {
-        return null;
+        return postoAtendimentoService.buscarPAPorCodigo(codigo);
     }
 
     @PutMapping("/{codigo}")
     public String atualizarPA (@PathVariable Integer codigo, @RequestBody PostoAtendimento postoAtendimento) {
-        return null;
+        Boolean atualizou = postoAtendimentoService.atualizarAgencia(codigo, postoAtendimento);
+        if(!atualizou){
+            return "Posto de Atendimento não encontrado.";
+        }
+        return "Posto de atendimento atualizado com sucesso.";
     }
 
     @DeleteMapping ("/{codigo}")
     public String deletarPA (@PathVariable Integer codigo) {
-        return null;
+        Boolean deletou = postoAtendimentoService.deletarPA(codigo);
+        if (!deletou){
+            return "Posto de Atendimento não encontrado.";
+        }
+        return "Posto de atendimento deletado com sucesso.";
     }
 
     @PostMapping
