@@ -3,10 +3,9 @@ package com.portal.querer20.controller;
 import com.portal.querer20.model.Agencia;
 import com.portal.querer20.service.AgenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -21,4 +20,23 @@ public class AgenciaController {
         return agenciaService.listarAgencia();
     }
 
+    @GetMapping ("/{codigo}")
+    public Agencia BuscarAgenciaPorCdigo (@PathVariable Integer codigo) {
+        return null;
+    }
+
+    @PutMapping ("/{codigo}")
+    public String atualizarAgencia (@PathVariable Integer codigo, @RequestBody Agencia agencia) {
+        return null;
+    }
+
+    @DeleteMapping ("/{codigo}")
+    public String deletarAgencia (@PathVariable Integer codigo) {
+        return null;
+    }
+
+    @PostMapping
+    public String cadastrarAgencia (@RequestBody Agencia agencia) {
+        return null;
+    }
 }

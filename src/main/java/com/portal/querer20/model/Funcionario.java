@@ -18,7 +18,7 @@ public class Funcionario {
     private String ramal;
     private String telefoneCelular;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "regional_codigo")
     @JsonIgnore
     private Regional regional;

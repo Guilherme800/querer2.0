@@ -17,8 +17,8 @@ public class LocalidadeService {
         return localidadeRepository.findAll();
     }
 
-    public Localidade cadastrarLocalidade (Localidade localidade){
-        return localidadeRepository.save(localidade);
+    public void cadastrarLocalidade (Localidade localidade){
+        localidadeRepository.save(localidade);
     }
 
     public Boolean atualizarLocalidade (Integer id, Localidade localidade){

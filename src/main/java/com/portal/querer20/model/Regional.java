@@ -1,6 +1,7 @@
 package com.portal.querer20.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.mapping.ToOne;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,12 +17,15 @@ public class Regional {
 
     @OneToMany(mappedBy = "regional")
     private List<Funcionario> funcionarios = new ArrayList<>();
-    @ManyToOne
-    @JoinColumn(name = "localidade_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "localidade_id", referencedColumnName = "id")
     private Localidade localidade;
 
     @OneToMany(mappedBy = "regional")
+    @JsonIgnore
     private List<Agencia> agencias = new ArrayList<>();
+
+
 
     public List<Agencia> getAgencias() {
         return agencias;

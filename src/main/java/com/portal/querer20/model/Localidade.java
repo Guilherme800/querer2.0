@@ -21,9 +21,10 @@ public class Localidade {
     @OneToMany(mappedBy = "localidade")
     @JsonIgnore
     private List<Agencia> agencias = new ArrayList<>();
-    @OneToMany(mappedBy = "localidade")
+
+    @OneToOne(mappedBy = "localidade")
     @JsonIgnore
-    private List<Regional> regionais = new ArrayList<>();
+    private Regional regional;
     @OneToMany(mappedBy = "localidade")
     @JsonIgnore
     private List<PostoAtendimento> pA = new ArrayList<>();
@@ -36,12 +37,12 @@ public class Localidade {
         this.agencias = agencias;
     }
 
-    public List<Regional> getRegionais() {
-        return regionais;
+    public Regional getRegional() {
+        return regional;
     }
 
-    public void setRegionais(List<Regional> regionais) {
-        this.regionais = regionais;
+    public void setRegional(Regional regional) {
+        this.regional = regional;
     }
 
     public List<PostoAtendimento> getpA() {
