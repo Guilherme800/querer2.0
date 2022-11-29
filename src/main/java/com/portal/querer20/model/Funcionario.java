@@ -22,11 +22,11 @@ public class Funcionario {
     @JoinColumn(name = "regional_codigo")
     @JsonIgnore
     private Regional regional;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "agencia_codigo")
     @JsonIgnore
     private Agencia agencia;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "pa_codigo")
     @JsonIgnore
     private PostoAtendimento pA;

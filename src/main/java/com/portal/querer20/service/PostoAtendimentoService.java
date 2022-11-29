@@ -1,11 +1,14 @@
 package com.portal.querer20.service;
 
 import com.portal.querer20.model.Agencia;
+import com.portal.querer20.model.Funcionario;
 import com.portal.querer20.model.PostoAtendimento;
+import com.portal.querer20.repository.FuncionarioRepository;
 import com.portal.querer20.repository.PostoAtendimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,6 +16,8 @@ public class PostoAtendimentoService {
 
     @Autowired
     private PostoAtendimentoRepository postoAtendimentoRepository;
+    @Autowired
+    private FuncionarioRepository funcionarioRepository;
 
     public List<PostoAtendimento> listarPA (){
         return postoAtendimentoRepository.findAll();
@@ -48,6 +53,23 @@ public class PostoAtendimentoService {
         }
         postoAtendimentoRepository.delete(postoAtendimento);
         return true;
+    }
+
+    public void adicionarPA (PostoAtendimento postoAtendimento) {
+        List<Funcionario> funcionarios1 = new ArrayList<>();
+        for (Funcionario funcionario : postoAtendimento.getFuncionarios()) {
+            Funcionario funcionario1;
+            if (funcionarioRepository.findByFuncional(funcionario.getFuncional()) != null) {
+                funcionario1 = funcionarioRepository.findByFuncional(funcionario.getFuncional());
+            } else {
+                funcionario1 = funcionario;
+            }
+            funcionario1.setpA(postoAtendimento);
+            funcionarioRepository.save(funcionario1);
+            funcionarios1.add(funcionario1);
+        }
+
+        postoAtendimentoRepository.save(postoAtendimento);
     }
 
 }

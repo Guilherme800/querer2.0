@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "PA")
 public class PostoAtendimento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer codigo;
     private String telefone;
     private Integer agenciaOrigem;
@@ -24,6 +24,7 @@ public class PostoAtendimento {
 
     @ManyToOne
     @JoinColumn(name = "agencia_codigo")
+    @JsonIgnore
     private Agencia agencia;
 
     public Agencia getAgencia() {

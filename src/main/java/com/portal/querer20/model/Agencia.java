@@ -1,7 +1,10 @@
 package com.portal.querer20.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
@@ -18,13 +21,14 @@ public class Agencia {
     private List<Funcionario> funcionarios = new ArrayList<>();
 
     @OneToMany(mappedBy = "agencia")
+    @JsonIgnore
     private List<PostoAtendimento> pA = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "localidade_id")
     private Localidade localidade;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "regional_codigo")
     private Regional regional;
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -45,7 +46,12 @@ public class AgenciaController {
     }
 
     @PostMapping
-    public String cadastrarAgencia (@RequestBody Agencia agencia) {
-        return null;
+    public String cadastrarAgencia (@Valid @RequestBody Agencia agencia) {
+        if (agencia.getCodigo() == null || agencia.getCodigo().equals("")){
+            return "Codigo obrigatório.";}
+        if (agencia.getTelefone() == null || agencia.getTelefone().equals("")){
+            return "Telefone obrigatório.";}
+        agenciaService.adicionarAgencia(agencia);
+        return "Regional cadastrada com sucesso.";
     }
 }

@@ -45,6 +45,11 @@ public class PostoAtendimentoController {
 
     @PostMapping
     public String cadastrarPA (@RequestBody PostoAtendimento postoAtendimento) {
-        return null;
+        if (postoAtendimento.getTelefone() == null || postoAtendimento.getTelefone().equals("")){
+            return "Telefone obrigatório.";}
+        if (postoAtendimento.getAgenciaOrigem() == null){
+            return "Agencia de origem obrigatório.";}
+        postoAtendimentoService.adicionarPA(postoAtendimento);
+        return "Posto de atendimento cadastrado com sucesso.";
     }
 }
